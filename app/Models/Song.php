@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Song extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'song_name',
+        'date_of_performance'
+    ];
+
+    public function mentorsForScore()
+    {
+        return $this->belongsToMany(Mentor::class)->withPivot('score');
+    }
+}
